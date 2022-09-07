@@ -1,0 +1,202 @@
+"'View Assets' As screen":
+
+    Rectangle1_4 As rectangle:
+        Fill: =LookUp(colStyles,Name="Header").Color
+        Width: =1366
+        X: =LookUp(colStyles, Name="Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =1
+
+    Icon1_4 As icon.Hamburger:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =LookUp(colStyles, Name="Header").Color
+        Icon: =Icon.Hamburger
+        OnSelect: =Set(varShowMenu, !varShowMenu)
+        X: =LookUp(colStyles, Name = "Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =2
+
+    galNavigation_4 As gallery.galleryVertical:
+        Items: =colNavigation
+        Layout: =Layout.Vertical
+        TemplateSize: =57
+        Visible: =varShowMenu = false
+        Width: =LookUp(colStyles, Name="Navigation").Width
+        X: =LookUp(colStyles, Name="Navigation").X
+        Y: =LookUp(colStyles, Name="Navigation").Y
+        ZIndex: =3
+
+        Label2_4 As label:
+            OnSelect: =Navigate(ThisItem.Screen, ThisItem.Transition)
+            Text: =ThisItem.Title
+            X: =40
+            Y: =17
+            ZIndex: =1
+
+    Label1_4 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =Bold
+        Height: =54
+        Size: =32
+        Text: ="GK IT Assets"
+        Width: =406
+        X: =500
+        Y: =25
+        ZIndex: =4
+
+    FormViewer1 As formViewer:
+        DataSource: =Table2
+        Height: =401
+        NumberOfColumns: =1
+        X: =283
+        Y: =251
+        ZIndex: =8
+
+        "'Asset ID_DataCard2' As typedDataCard.textualViewCard":
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Asset_x0020_ID"
+            Default: =ThisItem.'Asset ID'
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Asset_x0020_ID")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =800
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey6 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue6 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =27
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey6.Y + DataCardKey6.Height + 5
+                ZIndex: =2
+
+        Category_DataCard2 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Category"
+            Default: =ThisItem.Category
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Category")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =800
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue7 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =27
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7.Y + DataCardKey7.Height + 5
+                ZIndex: =2
+
+        Name_DataCard2 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Name"
+            Default: =ThisItem.Name
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Name")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =800
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey8 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue8 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =27
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey8.Y + DataCardKey8.Height + 5
+                ZIndex: =2
+
+        Specification_DataCard2 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Specification"
+            Default: =ThisItem.Specification
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Specification")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Width: =800
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey9 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue9 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =27
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey9.Y + DataCardKey9.Height + 5
+                ZIndex: =2
+

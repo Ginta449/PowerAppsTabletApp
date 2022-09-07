@@ -1,0 +1,97 @@
+{
+  "0ae90165-3b69-408e-90bc-176a169aa5f9": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "OneDrive for Business",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1546/1.0.1546.2665/onedriveforbusiness/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_onedriveforbusiness",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [],
+    "dependencies": {},
+    "dependents": [
+      "5e748f91-0640-431d-8a71-2e1ba8aa357b"
+    ],
+    "id": "0ae90165-3b69-408e-90bc-176a169aa5f9"
+  },
+  "5e748f91-0640-431d-8a71-2e1ba8aa357b": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Excel",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1595/1.0.1595.2986/excel/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_excel",
+      "parameterHints": {
+        "0ae90165-3b69-408e-90bc-176a169aa5f9": {
+          "value": "fileSource"
+        }
+      },
+      "parameterHintsV2": {
+        "fileSource": {
+          "value": "0ae90165-3b69-408e-90bc-176a169aa5f9"
+        }
+      }
+    },
+    "datasets": {
+      "b!ca2Fji7aC0a7XzV5t11dLVH_xnq5JGhDiW4CX6673B6S-IKyUOFFSoOHL4Vrcsd4.01ROPPXGFDPUXV4Z7KA5DJ75HI42YTXLFH": {
+        "dataSources": {
+          "categories": {
+            "tableName": "categories"
+          },
+          "Table2": {
+            "tableName": "Table2"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "categories",
+      "Table2"
+    ],
+    "dependencies": {
+      "fileSource": "0ae90165-3b69-408e-90bc-176a169aa5f9"
+    },
+    "dependents": [],
+    "id": "5e748f91-0640-431d-8a71-2e1ba8aa357b"
+  },
+  "8d12795b-8f9f-48c2-b2c1-90f5e2227429": {
+    "connectionParameters": {
+      "workFlowCallbackUri": "https://prod-87.westeurope.logic.azure.com:443/workflows/38f7525a9d874e728acd7e4bd57d2460/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=fxhTmC-dWWbNFqkFAwEnIhNp0BAA9PnoqkmyD1hB_qY",
+      "workflowEndpoint": "/subscriptions/e11470c2-cf7a-469b-98c8-2bfd43e8ae5b/resourceGroups/abcc9a4bcf044ca39d833465e3f43f61-c9984bb2e72f46598f5565f98944d50d/providers/Microsoft.Logic/workflows/98fa9bca-3498-43a3-aa9d-3bd69242ee93",
+      "workflowName": "98fa9bca-3498-43a3-aa9d-3bd69242ee93",
+      "workflowPath": "/subscriptions/e11470c2-cf7a-469b-98c8-2bfd43e8ae5b/resourceGroups/abcc9a4bcf044ca39d833465e3f43f61-c9984bb2e72f46598f5565f98944d50d/providers/Microsoft.Logic/workflows/98fa9bca-3498-43a3-aa9d-3bd69242ee93"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Logic flows",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1534/1.0.1534.2605/logicflows/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_logicflows",
+      "parameterHints": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "98fa9bca-3498-43a3-aa9d-3bd69242ee93"
+        }
+      },
+      "parameterHintsV2": {
+        "workflowEntityId": {},
+        "workflowName": {
+          "value": "98fa9bca-3498-43a3-aa9d-3bd69242ee93"
+        }
+      }
+    },
+    "datasets": {},
+    "dataSources": [
+      "TestFlow1"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "8d12795b-8f9f-48c2-b2c1-90f5e2227429"
+  }
+}

@@ -1,0 +1,75 @@
+Screen1 As screen:
+    Fill: =
+
+    Rectangle1 As rectangle:
+        Fill: =LookUp(colStyles,Name="Header").Color
+        Width: =1366
+        X: =LookUp(colStyles, Name="Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =1
+
+    Icon1 As icon.Hamburger:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =LookUp(colStyles, Name="Header").Color
+        Icon: =Icon.Hamburger
+        OnSelect: =Set(varShowMenu, !varShowMenu)
+        X: =LookUp(colStyles, Name = "Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =2
+
+    Label1 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =Bold
+        Height: =54
+        Size: =32
+        Text: ="GK IT Assets"
+        Width: =406
+        X: =500
+        Y: =25
+        ZIndex: =3
+
+    Button1 As button:
+        DisplayMode: =If(cbAcceptTCs.Value = true, DisplayMode.Edit, DisplayMode.Disabled)
+        Height: =200
+        OnSelect: =Navigate(Options, ScreenTransition.Fade); TestFlow1.Run(Concatenate(Text(Location.Latitude), "," , Text(Location.Longitude)))
+        Text: ="Enter"
+        Width: =550
+        X: =407
+        Y: =284
+        ZIndex: =4
+
+    lblDateBar As label:
+        Align: =Align.Right
+        FontWeight: =FontWeight.Bold
+        Height: =75
+        Size: =18
+        Text: =Text(Now(), "dddd dd mm yyyy")
+        Width: =Parent.Width
+        Y: =Rectangle1.Y + Rectangle1.Height
+        ZIndex: =5
+
+    cbAcceptTCs As checkbox:
+        Text: |-
+            ="I agree to the GK IT Assets T&Cs:"
+        Width: =275
+        X: =(Parent.Width - cbAcceptTCs.Width)/2
+        Y: =Button1.Y + Button1.Height + 40
+        ZIndex: =6
+
+    galNavigation As gallery.galleryVertical:
+        Items: =colNavigation
+        Layout: =Layout.Vertical
+        TemplateSize: =57
+        Visible: =varShowMenu = false
+        Width: =LookUp(colStyles, Name="Navigation").Width
+        X: =LookUp(colStyles, Name="Navigation").X
+        Y: =LookUp(colStyles, Name="Navigation").Y
+        ZIndex: =7
+
+        Label2 As label:
+            OnSelect: =Navigate(ThisItem.Screen, ThisItem.Transition)
+            Text: =ThisItem.Title
+            X: =40
+            Y: =40
+            ZIndex: =1
+

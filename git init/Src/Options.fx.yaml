@@ -1,0 +1,141 @@
+Options As screen:
+
+    Rectangle1_1 As rectangle:
+        Fill: =LookUp(colStyles,Name="Header").Color
+        Width: =1366
+        X: =LookUp(colStyles, Name="Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =1
+
+    Icon1_1 As icon.Hamburger:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =LookUp(colStyles, Name="Header").Color
+        Icon: =Icon.Hamburger
+        OnSelect: =Set(varShowMenu, !varShowMenu)
+        X: =LookUp(colStyles, Name = "Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =2
+
+    galNavigation_1 As gallery.galleryVertical:
+        Items: =colNavigation
+        Layout: =Layout.Vertical
+        TemplateSize: =57
+        Visible: =varShowMenu = false
+        Width: =LookUp(colStyles, Name="Navigation").Width
+        X: =LookUp(colStyles, Name="Navigation").X
+        Y: =LookUp(colStyles, Name="Navigation").Y
+        ZIndex: =3
+
+        Label2_1 As label:
+            OnSelect: =Navigate(ThisItem.Screen, ThisItem.Transition)
+            Text: =ThisItem.Title
+            X: =40
+            Y: =17
+            ZIndex: =1
+
+    Label1_1 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =Bold
+        Height: =54
+        Size: =32
+        Text: ="GK IT Assets"
+        Width: =406
+        X: =500
+        Y: =25
+        ZIndex: =4
+
+    galAssets As gallery.galleryVertical:
+        Height: =275
+        Items: =Filter(colAssets, Category=ctxSelectCategory)
+        Layout: =Layout.Vertical
+        TemplateSize: =102
+        Width: =712
+        X: =366
+        Y: =271
+        ZIndex: =5
+
+        Label5 As label:
+            Height: =36
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.'Asset Barcode'
+            X: =40
+            ZIndex: =1
+
+        Label6 As label:
+            Height: =36
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Category
+            X: =100
+            ZIndex: =2
+
+        Label7 As label:
+            Height: =36
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Name
+            X: =250
+            ZIndex: =3
+
+        Label8 As label:
+            Height: =36
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Specification
+            X: =461
+            ZIndex: =4
+
+        Icon4 As icon.ChevronRight:
+            Height: =36
+            Icon: =Icon.ChevronRight
+            OnSelect: =Select(Parent); Navigate('View Assets', ScreenTransition.Fade)
+            X: =600
+            ZIndex: =5
+
+    galCategories As gallery.galleryHorizontal:
+        Height: =619
+        Items: =categories
+        TemplateSize: =If(Self.Layout = Layout.Horizontal, Min(320, Self.Width - 60), Min(320, Self.Height - 60))
+        Width: =961
+        X: =222
+        Y: =122
+        ZIndex: =6
+
+        Label10 As label:
+            Fill: =LookUp(colStyles, Name="Header").Color
+            OnSelect: |-
+                =UpdateContext({ctxSelectCategory:ThisItem.Category})
+            Text: =ThisItem.Category
+            X: =40
+            Y: =40
+            ZIndex: =1
+
+    Icon3 As icon.People:
+        Icon: =Icon.People
+        OnSelect: =Navigate(Administrators, ScreenTransition.Fade)
+        Visible: =!IsBlank(LookUp(colUser, User=Lower(User().Email)).User)
+        X: =1268
+        Y: =18
+        ZIndex: =7
+
+    lblConnection As circle:
+        Fill: =If(varConnectionStatus, RGBA(54, 176, 75, 1), RGBA(184, 0, 0, 1))
+        Height: =35
+        Width: =37
+        X: =806
+        Y: =640
+        ZIndex: =8
+
+    txtConnection As label:
+        Text: =If(varConnectionStatus, "Connected", "Disconnected")
+        X: =843
+        Y: =635
+        ZIndex: =9
+
+    tmConnTimer As timer:
+        AutoStart: =true
+        Duration: =5000
+        OnTimerEnd: =Set(varConnectionStatus, Connection.Connected); If(Connection.Connected && CountRows(colAssetChanges) > 0, Clear(colAssetChanges); SaveData(colAssetChanges, "local_Table2Changes"); Refresh(Table2); ClearCollect(colAssets, Table2); SaveData(colAssets, "local_Table2"));
+        Repeat: =true
+        Visible: =false
+        X: =1016
+        Y: =635
+        ZIndex: =10
+

@@ -1,0 +1,81 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |-
+        =ClearCollect(colNavigation, 
+        {
+            Title: "Home",
+            Screen: Screen1,
+            Transition: ScreenTransition.Fade
+        },
+        {
+            Title: "Search",
+            Screen: Search,
+            Transition: ScreenTransition.Fade
+        },
+        {
+            Title: "Asset",
+            Screen: 'New Asset',
+            Transition: ScreenTransition.Fade
+        },
+        {
+            Title: "Options",
+            Screen: Options,
+            Transition: ScreenTransition.Fade
+        },
+        {
+            Title: "View Assets",
+            Screen: 'View Assets',
+            Transition: ScreenTransition.Fade
+        }
+        );
+        
+        //Branding
+        ClearCollect(colColors,
+        {
+        Name: "Primary", Color: RGBA(102, 153, 0, 1)	
+        },
+        {
+        Name: "Secondary", Color: RGBA(153, 0, 102, 1)
+        },
+        {
+        Name: "Screen", Color: RGBA(240, 240, 245, 1)
+        },
+        {
+        Name: "Primary", Color: RGBA(0, 0, 0, 1)
+        }
+        );
+        
+        //Styles
+        ClearCollect(colStyles,
+        {
+        Name: "Header", Color: LookUp(colColors, Name="Primary").Color, X: 0, Y: 0
+        },
+        {
+        Name: "Menu", Color: LookUp(colColors, Name="Secondary").Color, X: 20, Y: 15
+        },
+        {
+        Name: "ScreenTitle", Color: LookUp(colColors, Name="Secondary").Color, X: 500, Y: 25
+        },
+        {
+        Name: "Navigation", X: 0, Y: 100, Width:250
+        }
+        );
+        
+        //global variables
+        Set(varShowMenu, false);
+        
+        //User collection
+        ClearCollect(colUser,
+        {
+        User: "d00121871@student.dkit.ie",
+        Role: "Administrator"	
+        },
+        {
+        User: "user2@yourtenancy.omnicrosoft.com",
+        Role: "Administrator"
+        }
+        );
+        
+        //Add local ceche functionality to allow app to work offline
+        ClearCollect(colAssets, Table2);
+

@@ -1,0 +1,21 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_excel",
+    "CdpRevision": {
+      "BaseUrl": "/",
+      "LastChangedTimeString": "2022-08-24T16:52:56.8690000Z",
+      "RevisionNumber": 1
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "__PowerAppsId__": "Row id",
+      "Active": "Active",
+      "Category": "Category"
+    },
+    "DatasetName": "b!ca2Fji7aC0a7XzV5t11dLVH_xnq5JGhDiW4CX6673B6S-IKyUOFFSoOHL4Vrcsd4.01ROPPXGFDPUXV4Z7KA5DJ75HI42YTXLFH",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "categories",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

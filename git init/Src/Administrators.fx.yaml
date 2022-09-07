@@ -1,0 +1,71 @@
+Administrators As screen:
+
+    Rectangle1_5 As rectangle:
+        Fill: =LookUp(colStyles,Name="Header").Color
+        Width: =1366
+        X: =LookUp(colStyles, Name="Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =1
+
+    Icon1_5 As icon.Hamburger:
+        Color: =RGBA(255, 255, 255, 1)
+        Fill: =LookUp(colStyles, Name="Header").Color
+        Icon: =Icon.Hamburger
+        OnSelect: =Set(varShowMenu, !varShowMenu)
+        X: =LookUp(colStyles, Name = "Header").X
+        Y: =LookUp(colStyles, Name="Header").Y
+        ZIndex: =2
+
+    galNavigation_5 As gallery.galleryVertical:
+        Items: =colNavigation
+        Layout: =Layout.Vertical
+        TemplateSize: =57
+        Visible: =varShowMenu = false
+        Width: =LookUp(colStyles, Name="Navigation").Width
+        X: =LookUp(colStyles, Name="Navigation").X
+        Y: =LookUp(colStyles, Name="Navigation").Y
+        ZIndex: =3
+
+        Label2_5 As label:
+            OnSelect: =Navigate(ThisItem.Screen, ThisItem.Transition)
+            Text: =ThisItem.Title
+            X: =40
+            Y: =17
+            ZIndex: =1
+
+    Label1_5 As label:
+        Color: =RGBA(255, 255, 255, 1)
+        FontWeight: =Bold
+        Height: =54
+        Size: =32
+        Text: ="GK IT Assets"
+        Width: =406
+        X: =500
+        Y: =25
+        ZIndex: =4
+
+    galUsers As gallery.galleryVertical:
+        Height: =563
+        Items: =colUser
+        Layout: =Layout.Vertical
+        TemplateSize: =172
+        X: =363
+        Y: =100
+        ZIndex: =5
+
+        lblUserUPN As label:
+            Height: =24
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.User
+            Width: =415
+            X: =40
+            Y: =48
+            ZIndex: =1
+
+        lblUserRole As label:
+            OnSelect: =Select(Parent)
+            Text: =ThisItem.Role
+            X: =455
+            Y: =32
+            ZIndex: =2
+
