@@ -394,23 +394,58 @@
                 Y: =DataCardKey5.Y
                 ZIndex: =4
 
-        "'Asset Barcode_DataCard1' As typedDataCard.textualEditCard":
+        DataCard1 As typedDataCard.blankCard:
             BorderStyle: =BorderStyle.Solid
-            DataField: ="Asset_x0020_Barcode"
-            Default: =ThisItem.'Asset Barcode'
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =200
+            Width: =800
+            X: =0
+            Y: =8
+            ZIndex: =1
+
+            Icon2 As icon.Check:
+                Icon: =Icon.Check
+                OnSelect: |-
+                    =If(Connection.Connected, 
+                    SubmitForm(frmNewAsset); 
+                    Refresh(Table2); 
+                    ClearCollect(colAssets, Table2); 
+                    SaveData(Table2, "local_Table2"), 
+                    Collect(colAssetChanges, 
+                    {
+                    Name: txtName, 
+                    Specification: txtSpecification, 
+                    Location: txtLocation, 
+                    Category: txtCategory, 
+                    Asset_x0020_Photo: imgAssetPhoto, 
+                    Asset_x0020_ID: txtID, 
+                    Asset_x0020_Barcode: bcsAssetCode.Value
+                    }
+                    ); 
+                    SaveData(colAssets, "local_Table2Changes");
+                    );
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+        Assignee_DataCard1 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Assignee"
+            Default: =ThisItem.Assignee
             DisplayMode: =Parent.DisplayMode
-            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Asset_x0020_Barcode")
+            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Assignee")
             Fill: =RGBA(0, 0, 0, 0)
             Height: =50
-            MaxLength: =DataSourceInfo([@Table2], DataSourceInfo.MaxLength, "Asset_x0020_Barcode")
+            MaxLength: =DataSourceInfo([@Table2], DataSourceInfo.MaxLength, "Assignee")
             Required: =false
-            Update: =DataCardValue10.Text
+            Update: =DataCardValue11.Text
             Width: =800
             X: =0
             Y: =5
             ZIndex: =1
 
-            DataCardKey10 As label:
+            DataCardKey12 As label:
                 AutoHeight: =true
                 Height: =34
                 Text: =Parent.DisplayName
@@ -420,12 +455,11 @@
                 Y: =10
                 ZIndex: =1
 
-            DataCardValue10 As text:
+            DataCardValue11 As text:
                 BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
-                Default: =bcsAssetCode.Value
+                Default: =Parent.Default
                 DelayOutput: =true
                 DisplayMode: =Parent.DisplayMode
-                Height: =55
                 MaxLength: =Parent.MaxLength
                 PaddingLeft: =5
                 RadiusBottomLeft: =0
@@ -433,12 +467,12 @@
                 RadiusTopLeft: =0
                 RadiusTopRight: =0
                 Tooltip: =Parent.DisplayName
-                Width: =488
-                X: =282
-                Y: =35
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =47
                 ZIndex: =2
 
-            ErrorMessage6 As label:
+            ErrorMessage8 As label:
                 AutoHeight: =true
                 Height: =10
                 Live: =Live.Assertive
@@ -450,25 +484,18 @@
                 Visible: =Parent.DisplayMode=DisplayMode.Edit
                 Width: =Parent.Width - 60
                 X: =30
-                Y: =DataCardValue10.Y + DataCardValue10.Height
+                Y: =DataCardValue11.Y + DataCardValue11.Height
                 ZIndex: =3
 
-            StarVisible6 As label:
+            StarVisible8 As label:
                 Align: =Align.Center
-                Height: =DataCardKey10.Height
+                Height: =DataCardKey12.Height
                 Text: ="*"
                 Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
                 Width: =30
                 Wrap: =false
-                Y: =DataCardKey10.Y
+                Y: =DataCardKey12.Y
                 ZIndex: =4
-
-            bcsAssetCode As barcodeScanner:
-                Height: =50
-                Text: ="Scan"
-                X: =40
-                Y: =40
-                ZIndex: =5
 
         imgAssetPhoto As typedDataCard.addPictureCard:
             BorderStyle: =BorderStyle.Solid
@@ -537,38 +564,79 @@
                 Y: =40
                 ZIndex: =6
 
-        DataCard1 As typedDataCard.blankCard:
+        "'Asset Barcode_DataCard1' As typedDataCard.textualEditCard":
             BorderStyle: =BorderStyle.Solid
-            DisplayMode: =DisplayMode.Edit
+            DataField: ="Asset_x0020_Barcode"
+            Default: =ThisItem.'Asset Barcode'
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@Table2],DataSourceInfo.DisplayName,"Asset_x0020_Barcode")
             Fill: =RGBA(0, 0, 0, 0)
-            Height: =200
+            Height: =50
+            MaxLength: =DataSourceInfo([@Table2], DataSourceInfo.MaxLength, "Asset_x0020_Barcode")
+            Required: =false
+            Update: =DataCardValue10.Text
             Width: =800
             X: =0
             Y: =7
             ZIndex: =1
 
-            Icon2 As icon.Check:
-                Icon: =Icon.Check
-                OnSelect: |-
-                    =If(Connection.Connected, 
-                    SubmitForm(frmNewAsset); 
-                    Refresh(Table2); 
-                    ClearCollect(colAssets, Table2); 
-                    SaveData(Table2, "local_Table2"), 
-                    Collect(colAssetChanges, 
-                    {
-                    Name: txtName, 
-                    Specification: txtSpecification, 
-                    Location: txtLocation, 
-                    Category: txtCategory, 
-                    Asset_x0020_Photo: imgAssetPhoto, 
-                    Asset_x0020_ID: txtID, 
-                    Asset_x0020_Barcode: bcsAssetCode.Value
-                    }
-                    ); 
-                    SaveData(colAssets, "local_Table2Changes");
-                    );
+            DataCardKey10 As label:
+                AutoHeight: =true
+                Height: =34
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue10 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =bcsAssetCode.Value
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =55
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =0
+                RadiusBottomRight: =0
+                RadiusTopLeft: =0
+                RadiusTopRight: =0
+                Tooltip: =Parent.DisplayName
+                Width: =488
+                X: =282
+                Y: =35
+                ZIndex: =2
+
+            ErrorMessage6 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue10.Y + DataCardValue10.Height
+                ZIndex: =3
+
+            StarVisible6 As label:
+                Align: =Align.Center
+                Height: =DataCardKey10.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey10.Y
+                ZIndex: =4
+
+            bcsAssetCode As barcodeScanner:
+                Height: =50
+                Text: ="Scan"
                 X: =40
                 Y: =40
-                ZIndex: =1
+                ZIndex: =5
 
