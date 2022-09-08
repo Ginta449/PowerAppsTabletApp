@@ -53,7 +53,7 @@ Search As screen:
 
     btnTakePic As button:
         Height: =88
-        OnSelect: =TestFlow1.Run(crmAccesUserCamera.Photo)
+        OnSelect: ='PowerApp->Sendanemail(V2),Createfile'.Run(crmAccesUserCamera.Photo)
         Text: ="Button"
         Width: =385
         X: =452
