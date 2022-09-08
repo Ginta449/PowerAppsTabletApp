@@ -50,6 +50,7 @@
         DefaultMode: =FormMode.New
         Height: =606
         NumberOfColumns: =1
+        OnSuccess: =AssetAssignement.Run(frmNewAsset.LastSubmit.Assignee, frmNewAsset.LastSubmit.Name)
         X: =330
         Y: =153
         ZIndex: =5
@@ -394,41 +395,6 @@
                 Y: =DataCardKey5.Y
                 ZIndex: =4
 
-        DataCard1 As typedDataCard.blankCard:
-            BorderStyle: =BorderStyle.Solid
-            DisplayMode: =DisplayMode.Edit
-            Fill: =RGBA(0, 0, 0, 0)
-            Height: =200
-            Width: =800
-            X: =0
-            Y: =8
-            ZIndex: =1
-
-            Icon2 As icon.Check:
-                Icon: =Icon.Check
-                OnSelect: |-
-                    =If(Connection.Connected, 
-                    SubmitForm(frmNewAsset); 
-                    Refresh(Table2); 
-                    ClearCollect(colAssets, Table2); 
-                    SaveData(Table2, "local_Table2"), 
-                    Collect(colAssetChanges, 
-                    {
-                    Name: txtName, 
-                    Specification: txtSpecification, 
-                    Location: txtLocation, 
-                    Category: txtCategory, 
-                    Asset_x0020_Photo: imgAssetPhoto, 
-                    Asset_x0020_ID: txtID, 
-                    Asset_x0020_Barcode: bcsAssetCode.Value
-                    }
-                    ); 
-                    SaveData(colAssets, "local_Table2Changes");
-                    );
-                X: =40
-                Y: =40
-                ZIndex: =1
-
         txtAssignee As typedDataCard.textualEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="Assignee"
@@ -639,4 +605,39 @@
                 X: =40
                 Y: =40
                 ZIndex: =5
+
+        DataCard1 As typedDataCard.blankCard:
+            BorderStyle: =BorderStyle.Solid
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =200
+            Width: =800
+            X: =0
+            Y: =8
+            ZIndex: =1
+
+            Icon2 As icon.Check:
+                Icon: =Icon.Check
+                OnSelect: |-
+                    =If(Connection.Connected, 
+                    SubmitForm(frmNewAsset); 
+                    Refresh(Table2); 
+                    ClearCollect(colAssets, Table2); 
+                    SaveData(Table2, "local_Table2"), 
+                    Collect(colAssetChanges, 
+                    {
+                    Name: txtName, 
+                    Specification: txtSpecification, 
+                    Location: txtLocation, 
+                    Category: txtCategory, 
+                    Asset_x0020_Photo: imgAssetPhoto, 
+                    Asset_x0020_ID: txtID, 
+                    Asset_x0020_Barcode: bcsAssetCode.Value
+                    }
+                    ); 
+                    SaveData(colAssets, "local_Table2Changes");
+                    );
+                X: =40
+                Y: =40
+                ZIndex: =1
 
