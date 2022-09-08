@@ -46,7 +46,7 @@
         ZIndex: =4
 
     frmNewAsset As form:
-        DataSource: =Table2
+        DataSource: =colAssets
         DefaultMode: =FormMode.New
         Height: =606
         NumberOfColumns: =1
