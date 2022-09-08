@@ -44,3 +44,19 @@ Search As screen:
         Y: =25
         ZIndex: =4
 
+    crmAccesUserCamera As camera:
+        Camera: =0
+        Width: =397
+        X: =440
+        Y: =124
+        ZIndex: =5
+
+    btnTakePic As button:
+        Height: =88
+        OnSelect: =TestFlow1.Run(crmAccesUserCamera.Photo)
+        Text: ="Button"
+        Width: =385
+        X: =452
+        Y: =452
+        ZIndex: =6
+
