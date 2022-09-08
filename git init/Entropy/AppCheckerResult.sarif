@@ -1783,19 +1783,19 @@
             {
               "logicalLocations": [
                 {
-                  "fullyQualifiedName": "'New Asset'.frmNewAsset.Assignee_DataCard1.DataCardValue11.AccessibleLabel"
+                  "fullyQualifiedName": "'New Asset'.frmNewAsset.txtAssignee.DataCardValue11.AccessibleLabel"
                 }
               ],
               "physicalLocation": {
                 "address": {
-                  "fullyQualifiedName": "'New Asset'.frmNewAsset.Assignee_DataCard1.DataCardValue11.AccessibleLabel",
+                  "fullyQualifiedName": "'New Asset'.frmNewAsset.txtAssignee.DataCardValue11.AccessibleLabel",
                   "relativeAddress": 0
                 }
               },
               "properties": {
                 "member": "AccessibleLabel",
                 "module": "New Asset",
-                "type": "'New Asset'.frmNewAsset.Assignee_DataCard1.DataCardValue11"
+                "type": "'New Asset'.frmNewAsset.txtAssignee.DataCardValue11"
               }
             }
           ],

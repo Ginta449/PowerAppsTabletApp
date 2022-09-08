@@ -429,7 +429,7 @@
                 Y: =40
                 ZIndex: =1
 
-        Assignee_DataCard1 As typedDataCard.textualEditCard:
+        txtAssignee As typedDataCard.textualEditCard:
             BorderStyle: =BorderStyle.Solid
             DataField: ="Assignee"
             Default: =ThisItem.Assignee
